@@ -9,29 +9,32 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 
 ### List All Users [GET]
 
-+ Response 200 (application/json)
++ Request (application/json)
+    + Headers
+    
+            Location: /users
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHwxMzI0NTYiLCJleHAiOjEzOTI4MTc4ODQsImF1ZCI6InRvcGNvZGVyIiwiaWF0IjoxMzkyNzU3ODg0fQ.7X2IKkiyyI1ExSM5GNpdhJ8fGGK5-oAjzccX6YL_BKY
 
++ Response 200
+    
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "type":"user",
+                "publicId": eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9,
+                "personalInfo":{
+                    "firstName": "Gigi",
+                    "lastName": "Migi"
+                }
             }
         ]
+
++ Response 401 (application/json)
+
+        {
+            "name":"Unauthorized",
+            "value":"401",
+            "description":"Authentication credentials were missing or incorrect."
+        }
 
 ### Create a New Question [POST]
 
